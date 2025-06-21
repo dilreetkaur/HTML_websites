@@ -1,0 +1,616 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Softer, smoother palette */
+    --primary-color: #5d8eef; /* A calming blue */
+    --secondary-color: #ff7f50; /* A soft coral */
+    --accent-color-1: #66cdaa; /* A gentle turquoise */
+    --accent-color-2: #ffb6c1; /* A soft pink */
+    --dark-bg: #f8faff; /* Very light blue-white */
+    --dark-text: #333d51; /* Darker charcoal for readability */
+    --light-bg: #ffffff; /* Pure white */
+    --light-text: #4a546e; /* Slightly softer dark text for light sections */
+    --card-bg: #ffffff; /* White card background */
+    --shadow-light: rgba(0, 0, 0, 0.08); /* Very subtle shadow */
+    --shadow-medium: rgba(0, 0, 0, 0.12); /* Slightly more visible shadow */
+}
+
+body {
+    line-height: 1.7;
+    background-color: var(--dark-bg); /* Starting with a very light bg */
+    color: var(--dark-text);
+    font-family: 'Oxanium', sans-serif;
+    overflow-x: hidden;
+}
+
+/* --- Navbar --- */
+.navbar {
+    background-color: var(--light-bg); /* White navbar */
+    padding: 1rem 2rem;
+    color: var(--dark-text);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px var(--shadow-light);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar .logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--dark-text);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.navbar .logo-accent {
+    color: var(--primary-color); /* Calming blue pop */
+}
+
+.navbar nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.navbar nav a {
+    color: var(--light-text); /* Softer dark text */
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease;
+    padding: 0.5rem 0; /* Add padding for a larger click area */
+}
+
+.navbar nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--primary-color); /* Calming blue underline */
+    transition: width 0.3s ease-out;
+}
+
+.navbar nav a:hover {
+    color: var(--primary-color);
+}
+
+.navbar nav a:hover::after {
+    width: 100%;
+}
+
+/* --- Hero Section --- */
+.hero {
+    background: linear-gradient(135deg, #e0f2f7 0%, #d1e2e7 100%); /* Very light, smooth gradient */
+    color: var(--dark-text); /* Dark text on light background */
+    padding: 6rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 85vh;
+    border-bottom: none; /* No harsh border */
+    box-shadow: none; /* No strong shadow */
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* More subtle background pattern */
+    background: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="5" fill="%23c4d8ea" opacity="0.1"/><circle cx="80" cy="80" r="7" fill="%23c4d8ea" opacity="0.1"/><circle cx="50" cy="50" r="4" fill="%23c4d8ea" opacity="0.1"/><path d="M0,0 L100,100 M100,0 L0,100" stroke="%23c4d8ea" stroke-width="0.5" opacity="0.05"/></svg>') repeat;
+    opacity: 1;
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+}
+
+.hero h1 {
+    font-size: 3.8rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    font-weight: 700;
+    text-shadow: none; /* No glowing text */
+    color: var(--dark-text); /* Main text color */
+}
+
+.hero .highlight {
+    color: var(--primary-color); /* Blue highlight */
+}
+
+.hero p {
+    font-size: 1.3rem;
+    margin-bottom: 2.5rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+.hero .cta-button {
+    background-color: var(--primary-color); /* Calming blue button */
+    color: white;
+    padding: 1.1rem 3rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    display: inline-block;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px var(--shadow-medium); /* Softer shadow */
+    position: relative;
+    overflow: hidden;
+    transform: translateY(0);
+}
+
+.hero .cta-button:hover {
+    background-color: var(--secondary-color); /* Soft coral on hover */
+    transform: translateY(-3px) scale(1.01); /* Softer lift */
+    box-shadow: 0 8px 20px var(--shadow-medium);
+}
+
+.hero .cta-button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1); /* Softer shine */
+    transition: all 0.4s ease-in-out;
+    transform: skewX(-20deg);
+}
+
+.hero .cta-button:hover::after {
+    left: 100%;
+}
+
+/* Floating Elements (abstract background shapes) */
+.floating-element {
+    position: absolute;
+    background-color: rgba(93, 142, 239, 0.1); /* Primary color transparency */
+    border-radius: 50%;
+    animation: float 10s ease-in-out infinite;
+    z-index: 0;
+    filter: blur(8px); /* Softer blur */
+}
+
+.f-one {
+    width: 120px;
+    height: 120px;
+    top: 15%;
+    left: 8%;
+    animation-duration: 9s;
+    animation-delay: 0.5s;
+}
+
+.f-two {
+    width: 180px;
+    height: 180px;
+    bottom: 18%;
+    right: 12%;
+    animation-duration: 11s;
+    animation-delay: 1s;
+}
+
+.f-three {
+    width: 90px;
+    height: 90px;
+    top: 55%;
+    left: 25%;
+    animation-duration: 8s;
+    animation-delay: 0s;
+}
+
+@keyframes float {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0.1; }
+    50% { transform: translateY(-20px) rotate(10deg); opacity: 0.2; } /* Softer movement */
+    100% { transform: translateY(0) rotate(0deg); opacity: 0.1; }
+}
+
+
+/* --- General Section Styles --- */
+.informative-section {
+    padding: 6rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.dark-bg-section {
+    background-color: var(--dark-bg); /* Very light bg */
+    color: var(--dark-text);
+    border-bottom: none; /* No separator */
+}
+
+.light-bg-section {
+    background-color: var(--light-bg); /* Pure white bg */
+    color: var(--light-text);
+    border-bottom: none; /* No separator */
+}
+
+.section-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.informative-section h2, .features h2, .about h2 { /* Removed contact from this selector */
+    font-size: 2.8rem;
+    margin-bottom: 2.5rem;
+    font-weight: 600;
+    text-shadow: none; /* No glowing text */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.informative-section h2 { color: var(--primary-color); } /* Calming blue */
+.features h2 { color: var(--secondary-color); } /* Soft coral */
+.about h2 { color: var(--accent-color-1); } /* Gentle turquoise */
+
+
+.informative-section p {
+    font-size: 1.15rem;
+    line-height: 1.9;
+    margin-bottom: 1.5rem;
+    color: var(--dark-text);
+    font-weight: 300;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.informative-section.light-bg-section p {
+    color: var(--light-text);
+}
+
+.informative-section p strong {
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+/* Waving Bot Mini for "What is an AI Desk Bot?" section */
+.heading-with-bot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 2.5rem;
+}
+
+.heading-with-bot h2 {
+    margin-bottom: 0;
+}
+
+.waving-bot-mini {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+    animation: bot-float-mini 4s ease-in-out infinite alternate;
+    /* This will be handled by media queries for desktop/mobile display */
+}
+
+.mini-bot-body {
+    width: 45px;
+    height: 45px;
+    background-color: var(--accent-color-1); /* Gentle turquoise body */
+    border-radius: 50%;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 3px 10px var(--shadow-light); /* Softer shadow */
+    border: 1px solid rgba(0,0,0,0.1); /* Softer border */
+}
+
+.mini-bot-head {
+    width: 30px;
+    height: 30px;
+    background-color: var(--primary-color); /* Calming blue head */
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    box-shadow: 0 2px 8px var(--shadow-light); /* Softer shadow */
+    border: 1px solid rgba(0,0,0,0.1); /* Softer border */
+}
+
+.mini-bot-arm {
+    width: 25px;
+    height: 8px;
+    background-color: var(--secondary-color); /* Soft coral arms */
+    border-radius: 4px;
+    position: absolute;
+    top: 25px;
+    transform-origin: 100% 50%;
+    animation: wave 1.5s ease-in-out infinite alternate;
+    z-index: 0;
+}
+
+.mini-bot-arm-left {
+    left: -10px;
+    transform: rotate(0deg);
+}
+
+.mini-bot-arm-right {
+    right: -10px;
+    transform: rotate(0deg);
+    animation-delay: 0.2s;
+}
+
+@keyframes bot-float-mini {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-10px); }
+}
+
+@keyframes wave {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(30deg); }
+    100% { transform: rotate(0deg); }
+}
+
+/* --- Benefits Grid --- */
+.benefit-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
+}
+
+.benefit-card {
+    background-color: var(--card-bg); /* White card background */
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px var(--shadow-light); /* Softer shadow */
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05); /* Very subtle border */
+    position: relative;
+    overflow: hidden;
+}
+
+.benefit-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(93, 142, 239, 0.05) 0%, transparent 70%); /* Primary color transparency */
+    transition: transform 0.5s ease-out;
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+}
+
+.benefit-card:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.benefit-card h3 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.benefit-card p {
+    font-size: 0.95rem;
+    color: var(--light-text); /* Softer dark text */
+    line-height: 1.7;
+}
+
+/* --- Features Section (now "Capabilities") --- */
+.features {
+    padding: 6rem 2rem;
+    background-color: var(--light-bg); /* Pure white bg */
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feature {
+    background-color: var(--card-bg); /* White card background */
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px var(--shadow-light); /* Softer shadow */
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05); /* Very subtle border */
+}
+
+.feature:hover {
+    transform: translateY(-5px) scale(1.01); /* Softer lift */
+    box-shadow: 0 10px 25px var(--shadow-medium);
+    border-color: var(--primary-color); /* Highlight border on hover */
+}
+
+.feature .icon-wrapper {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+    color: var(--secondary-color); /* Soft coral icon color */
+    transform: scale(1) rotate(0deg);
+    transition: transform 0.3s ease;
+    text-shadow: none; /* No glow */
+}
+
+.feature:hover .icon-wrapper {
+    transform: scale(1.05) rotate(5deg); /* Softer animation */
+    color: var(--primary-color); /* Change color on hover */
+}
+
+.feature h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--dark-text);
+    font-weight: 500;
+}
+
+.feature p {
+    font-size: 1rem;
+    color: var(--light-text); /* Softer dark text */
+    font-weight: 300;
+}
+
+/* --- About Section --- */
+.about {
+    padding: 6rem 2rem;
+    background: linear-gradient(45deg, #e0f2f7, #d1e2e7); /* Light, smooth gradient */
+    color: var(--dark-text);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-top: none;
+    border-bottom: none;
+}
+
+/* Adjusted morphing elements for lighter background */
+.about::before {
+    background-color: rgba(93, 142, 239, 0.05); /* Primary color transparency */
+    filter: blur(10px); /* Softer blur */
+}
+
+.about::after {
+    background-color: rgba(255, 127, 80, 0.05); /* Secondary color transparency */
+    filter: blur(10px); /* Softer blur */
+}
+
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.about h2 {
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    color: var(--accent-color-1); /* Gentle turquoise heading */
+    text-shadow: none; /* No glow */
+}
+
+.about p {
+    font-size: 1.15rem;
+    opacity: 0.9;
+    color: var(--light-text); /* Softer dark text */
+    font-weight: 300;
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: #e0f2f7; /* Light footer to match hero */
+    color: var(--light-text);
+    margin-top: 0;
+    font-size: 0.9rem;
+    border-top: none;
+}
+
+footer p {
+    opacity: 0.8;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .navbar nav ul {
+        gap: 1rem;
+    }
+
+    .hero {
+        padding: 4rem 1.5rem;
+        min-height: 70vh;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .informative-section h2, .features h2, .about h2 { /* Removed contact from this selector */
+        font-size: 2.2rem;
+        margin-bottom: 2rem;
+    }
+
+    .heading-with-bot {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    /* Keep mini bot on mobile if it fits, otherwise set to none */
+    .waving-bot-mini {
+        display: block; /* By default, show on mobile */
+        width: 50px;
+        height: 50px;
+    }
+    .mini-bot-body { width: 38px; height: 38px; }
+    .mini-bot-head { width: 25px; height: 25px; }
+    .mini-bot-arm { width: 20px; height: 6px; }
+
+
+    .feature-grid, .benefit-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .feature, .benefit-card {
+        padding: 1.5rem;
+    }
+
+    .feature h3, .benefit-card h3 {
+        font-size: 1.5rem;
+    }
+
+    .informative-section p, .feature p, .benefit-card p {
+        font-size: 0.95rem;
+    }
+
+    .about, .informative-section, .features { /* Removed contact from this selector */
+        padding: 4rem 1.5rem;
+    }
+}
+
+@media (min-width: 769px) {
+    .waving-bot-mini {
+        display: block; /* Show mini bot on larger screens */
+    }
+}
